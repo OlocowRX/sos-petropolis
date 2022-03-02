@@ -1,0 +1,11 @@
+<h1>Teste de new</h1>
+
+<%= current_user.email %>
+
+<div class="container">
+  <%= simple_form_for [@campaign] do |f| %>
+    <%= f.input :name %>
+    <%= f.input :info %>
+    <%= f.button :submit, class: 'btn btn-primary' %>
+  <% end %>
+</div>
