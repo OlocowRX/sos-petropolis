@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.itinari.com/pages/images/original/ed7b3ab7-2234-403b-a8aa-2211dcd92990-istock-julio-ricco.jpg?ch=DPR&dpr=2.625&w=1600&s=0dcbcd13c18b6e0d66742d3bbe45c3df);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'petropolis.jpg' %>);">
   <div class="container">
     <h1>Colabore com a reconstrução da <strong>Cidade Imperial</strong></h1>
     <p>Conheça as instituições para as quais você pode doar</p>
@@ -6,72 +6,28 @@
   </div>
 </div>
 
-<div class="row cards-home">
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="cards">
-        <%= link_to campaigns_path do %>
-          <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <div class="card-trip-infos">
-              <div class="card-layout">
-                <h2>Campanha 1</h2>
-                <p>Ajude com sua doação para essa instituição</p>
+<div class="container-home">
+  <div class="row">
+    <% @campaigns.each do |campaign| %>
+      <div class="col-sm-6 col-lg-3">
+        <div class="cards">
+          <%= link_to campaign_path(campaign) do %>
+            <div class="card-trip">
+              <% if campaign.image.attached? %>
+                <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
+              <% else %>
+                <%= image_tag 'placeholder.jpeg' %>
+              <% end %>
+              <div class="card-trip-infos">
+                <div class="card-layout">
+                  <h2><%= campaign.name %></h2>
+                  <%= campaign.info %>
+                </div>
               </div>
             </div>
-          </div>
-        <%end%>
+          <%end%>
+        </div>
       </div>
-    </div>
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="cards">
-        <%= link_to campaigns_path do %>
-          <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <div class="card-trip-infos">
-              <div class="card-layout">
-                <h2>Campanha 2</h2>
-                <p>Ajude com sua doação para essa instituição</p>
-              </div>
-            </div>
-          </div>
-        <%end%>
-      </div>
-    </div>
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="cards">
-        <%= link_to campaigns_path do %>
-          <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <div class="card-trip-infos">
-              <div class="card-layout">
-                <h2>Campanha 3</h2>
-                <p>Ajude com sua doação para essa instituição</p>
-              </div>
-            </div>
-          </div>
-        <%end%>
-      </div>
-    </div>
-
-    <div class="col-sm-6 col-lg-3">
-      <div class="cards">
-        <%= link_to campaigns_path do %>
-          <div class="card-trip">
-            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
-            <div class="card-trip-infos">
-              <div class="card-layout">
-                <h2>Campanha 4</h2>
-                <p>Ajude com sua doação para essa instituição</p>
-              </div>
-            </div>
-          </div>
-        <%end%>
-      </div>
-    </div>
-
-
-
-
+    <% end %>
+  </div>
+</div>

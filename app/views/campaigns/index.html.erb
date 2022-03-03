@@ -7,7 +7,7 @@
       <% if campaign.image.attached? %>
         <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
       <% else %>
-        <%= image_tag 'teste.png' %>
+        <%= image_tag 'placeholder.jpeg' %>
       <% end %>
       <div class="card-body">
         <p>
