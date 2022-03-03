@@ -3,3 +3,73 @@
 <%= current_user.email if user_signed_in? %>
 <%= link_to 'campaigns', campaigns_path %> |
 <%= link_to 'logout',  destroy_user_session_path, method: :delete %>
+
+
+<div class="row cards-home">
+
+    <div class="col-sm-6 col-lg-3">
+      <div class="cards">
+        <%= link_to campaigns_path do %>
+          <div class="card-trip">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-infos">
+              <div class="card-layout">
+                <h2>Campanha 1</h2>
+                <p>Ajude com sua doação para essa instituição</p>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+      <div class="cards">
+        <%= link_to campaigns_path do %>
+          <div class="card-trip">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-infos">
+              <div class="card-layout">
+                <h2>Campanha 2</h2>
+                <p>Ajude com sua doação para essa instituição</p>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+      <div class="cards">
+        <%= link_to campaigns_path do %>
+          <div class="card-trip">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-infos">
+              <div class="card-layout">
+                <h2>Campanha 3</h2>
+                <p>Ajude com sua doação para essa instituição</p>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+    <div class="col-sm-6 col-lg-3">
+      <div class="cards">
+        <%= link_to campaigns_path do %>
+          <div class="card-trip">
+            <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/greece.jpg" />
+            <div class="card-trip-infos">
+              <div class="card-layout">
+                <h2>Campanha 4</h2>
+                <p>Ajude com sua doação para essa instituição</p>
+              </div>
+            </div>
+          </div>
+        <%end%>
+      </div>
+    </div>
+
+
+</div>
