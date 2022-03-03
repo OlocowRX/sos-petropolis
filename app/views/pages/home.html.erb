@@ -1,4 +1,4 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.itinari.com/pages/images/original/ed7b3ab7-2234-403b-a8aa-2211dcd92990-istock-julio-ricco.jpg?ch=DPR&dpr=2.625&w=1600&s=0dcbcd13c18b6e0d66742d3bbe45c3df);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(<%= image_path 'petropolis.jpg' %>);">
   <div class="container">
     <h1>Colabore com a reconstrução da <strong>Cidade Imperial</strong></h1>
     <p>Conheça as instituições para as quais você pode doar</p>
@@ -6,8 +6,8 @@
   </div>
 </div>
 
-<div class="row cards-home">
-
+<div class="container-home">
+  <div class="row">
     <div class="col-sm-6 col-lg-3">
       <div class="cards">
         <%= link_to campaigns_path do %>
@@ -70,8 +70,6 @@
           </div>
         <%end%>
       </div>
+     </div>
     </div>
-
-
-
-
+  </div>
