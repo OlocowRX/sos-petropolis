@@ -2,6 +2,6 @@
 <% if @campaign.image.attached? %>
   <%= cl_image_tag @campaign.image.key, height: 300, width: 400, crop: :fill %>
 <% else %>
-  <%= image_tag 'teste.png', class: 'w-25' %>
+  <%= image_tag 'placeholder.jpeg', class: 'w-25' %>
 <% end %>
 <p><%= @campaign.info %></p>
