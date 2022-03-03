@@ -4,7 +4,11 @@
 <div class="d-flex">
   <% @campaigns.each_with_index do |campaign, index| %>
     <div class="card" style="width: 300px;">
-      <%= cl_image_tag campaign.image.key, height: 200, width: 300, crop: :fill %>
+      <% if campaign.image.attached? %>
+        <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <%= image_tag 'teste.png' %>
+      <% end %>
       <div class="card-body">
         <p>
           <%= index + 1 %> - <%= campaign.name %> |
