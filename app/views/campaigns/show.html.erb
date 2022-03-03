@@ -1,5 +1,4 @@
 <h1><%= @campaign.name %></h1>
-
 <% if @campaign.image.attached? %>
   <%= cl_image_tag @campaign.image.key, height: 300, width: 400, crop: :fill %>
 <% else %>
