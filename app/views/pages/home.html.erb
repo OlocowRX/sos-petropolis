@@ -1,9 +1,10 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= current_user.email if user_signed_in? %>
-<%= link_to 'campaigns', campaigns_path %> |
-<%= link_to 'logout',  destroy_user_session_path, method: :delete %>
-
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.itinari.com/pages/images/original/ed7b3ab7-2234-403b-a8aa-2211dcd92990-istock-julio-ricco.jpg?ch=DPR&dpr=2.625&w=1600&s=0dcbcd13c18b6e0d66742d3bbe45c3df);">
+  <div class="container">
+    <h1>Colabore com a reconstrução da <strong>Cidade Imperial</strong></h1>
+    <p>Conheça as instituições para as quais você pode doar</p>
+    <%= link_to "Doe aqui", "#", class: "btn btn-flat" %>
+  </div>
+</div>
 
 <div class="row cards-home">
 
@@ -72,4 +73,5 @@
     </div>
 
 
-</div>
+
+
