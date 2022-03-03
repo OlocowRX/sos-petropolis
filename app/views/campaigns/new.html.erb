@@ -6,6 +6,7 @@
   <%= simple_form_for [@campaign] do |f| %>
     <%= f.input :name %>
     <%= f.input :info %>
+    <%= f.input :image, as: :file %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
 </div>
