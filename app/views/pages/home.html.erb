@@ -11,16 +11,16 @@
     <% @campaigns.each do |campaign| %>
       <div class="col-sm-6 col-lg-3">
         <div class="cards">
-          <%= link_to campaigns_path do %>
+          <%= link_to campaign_path(campaign) do %>
             <div class="card-trip">
               <% if campaign.image.attached? %>
                 <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
               <% else %>
+                <%= image_tag 'placeholder.jpeg' %>
+              <% end %>
               <div class="card-trip-infos">
                 <div class="card-layout">
-                  <%= link_to campaign_path(campaign) do %>
-                    <h2><%= campaign.name %></h2>
-                  <% end %>
+                  <h2><%= campaign.name %></h2>
                   <%= campaign.info %>
                 </div>
               </div>
