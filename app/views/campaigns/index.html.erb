@@ -1,13 +1,23 @@
 <h1>All Campaigns</h1>
 <p>Lista de campanhas:</p>
 
-<% @campaigns.each_with_index do |campaign, index| %>
-  <p>
-    <%= index + 1 %> - <%= campaign.name %> |
-    <%= campaign.info %> |
-    <%= campaign.user.name %> |
-    <%= link_to 'View', campaign_path(campaign) %>
-  </p>
-<% end %>
-
+<div class="d-flex">
+  <% @campaigns.each_with_index do |campaign, index| %>
+    <div class="card" style="width: 300px;">
+      <% if campaign.image.attached? %>
+        <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+        <%= image_tag 'teste.png' %>
+      <% end %>
+      <div class="card-body">
+        <p>
+          <%= index + 1 %> - <%= campaign.name %> |
+          <%= campaign.info %> |
+          <%= campaign.user.name %> |
+          <%= link_to 'View', campaign_path(campaign) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
 <%= link_to 'Create a campaign', new_campaign_path %>
