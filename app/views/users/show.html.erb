@@ -1,6 +1,10 @@
 <div class="container">
 <div class="header d-flex align-items-center pt-5">
-  <%= image_tag current_user.picture, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
+  <% if current_user.picture.attached? %>
+    <%= image_tag current_user.picture, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
+  <% else %>
+    <%= image_tag "avatar.png", class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
+  <% end %>
   <div class="info mx-3">
     <h3>Nome: <%= current_user.name %></h3>
     <h4>Email: <%= current_user.email %></h4>
