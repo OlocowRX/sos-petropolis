@@ -1,7 +1,20 @@
-.container {
+.cardcontainer {
   margin: 0 15px;
   height: 200px;
   width: 100%;
   object-fit: cover;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.info {
+  margin-top: 100px;
+  margin-bottom: 100px;
+}
+
+.link {
+  text-decoration: none;
 }
