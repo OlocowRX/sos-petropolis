@@ -1,0 +1,69 @@
+<div class="container">
+<div class="header d-flex align-items-center pt-5">
+  <%= image_tag current_user.picture, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
+  <div class="info mx-3">
+    <h3>Nome: <%= current_user.name %></h3>
+    <h4>Email: <%= current_user.email %></h4>
+  </div>
+</div>
+<!--------------------------------CAMPAIGNS------------------------------------>
+
+  <div class="campaigns my-5">
+    <h5>Minhas Campanhas:</h5>
+    <% if current_user.campaigns.count == 0 %>
+      <p style="color: red;">Nenhuma campanha ativa</p>
+    <% else %>
+      <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Nome</th>
+          <th scope="col">Informações</th>
+          <th scope="col">Telefone</th>
+        </tr>
+      </thead>
+      <tbody>
+          <% current_user.campaigns.each do |campaign| %>
+            <tr>
+              <td><%= campaign.name %></td>
+              <td><%= campaign.info %></td>
+              <td><%= campaign.phone_number %></td>
+            </tr>
+          <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </div>
+
+<!--------------------------------DONATIONS------------------------------------>
+
+  <div class="donations my-5">
+    <h5>Minhas doações:</h5>
+    <% if current_user.donations.count == 0 %>
+      <p style="color: red;">Você não realizou nenhuma doação ultimamente</p>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Tipo</th>
+            <th scope="col">Observações</th>
+            <th scope="col">Campanha</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% current_user.donations.each do |donation| %>
+              <tr>
+                <td><%= donation.donation_type.upcase %></td>
+                <td><%= donation.observation %></td>
+                <td><%= link_to donation.campaign.name, campaign_path(donation.campaign), style: 'text-decoration: none; color: #3BAF4C;' %></td>
+                <td><%= link_to 'excluir',
+                        donation_path(donation),
+                        method: :delete,
+                        data: {confirm: "Is this donation done?"},
+                        style: 'text-decoration: none; color: red' %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    <% end %>
+  </div>
+</div>
