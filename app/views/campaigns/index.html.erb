@@ -1,5 +1,7 @@
-<h1>All Campaigns</h1>
-<p>Lista de campanhas:</p>
+<div class="title">
+  ><h1>Campanhas</h1>
+  <p>Todas as campanhas:</p>
+</div>
 
 <div class="d-flex">
   <% @campaigns.each_with_index do |campaign, index| %>
@@ -14,10 +16,10 @@
           <%= index + 1 %> - <%= campaign.name %> |
           <%= campaign.info %> |
           <%= campaign.user.name %> |
-          <%= link_to 'View', campaign_path(campaign) %>
+          <%= link_to 'Visualizar', campaign_path(campaign) %>
         </p>
       </div>
     </div>
   <% end %>
 </div>
-<%= link_to 'Create a campaign', new_campaign_path %>
+<%= link_to 'Criar nova campanha', new_campaign_path %>
