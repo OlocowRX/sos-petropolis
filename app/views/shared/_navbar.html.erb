@@ -18,20 +18,27 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <%# if user_signed_in? %>
+          <%= link_to "Campanhas", campaigns_path, class: "nav-link" %>
           <% unless user_signed_in? %>
+            <%= link_to "|", new_user_session_path, class: "nav-link" %>
             <%= link_to "Entrar", new_user_session_path, class: "nav-link" %>
+            <%= image_tag "avatar.png", class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+
+            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+              <%= link_to "Cadastrar", new_user_registration_path, class: "dropdown-item" %>
+            </div>
           <% end %>
           <li class="nav-item dropdown">
-            <% if user_signed_in? && current_user.picture.attached? %>
+          <% if user_signed_in? %>
+            <% if current_user.picture.attached? %>
               <%= cl_image_tag current_user.picture.key, class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <% else %>
-              <%= image_tag "avatar.png", class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <% end %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
               <%= link_to "Another action", "#", class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
+          <% end %>
           </li>
         <%# else %>
           <!--li class="nav-item"-->
