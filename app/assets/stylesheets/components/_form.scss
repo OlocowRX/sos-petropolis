@@ -10,3 +10,10 @@
 .form-control{
   background-color: white;
 }
+.link-password, .link-signup{
+  text-decoration: none;
+}
+.link-signup{
+  display: inline-block;
+  margin-top: 10px;
+}

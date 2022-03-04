@@ -17,9 +17,10 @@
     </div>
 
     <div class="form-actions">
-      <%= f.button :submit, "Log in" %>
+      <%= f.button :submit, "Log in", class: "btn btn-primary" %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
+  <p>Se você ainda não é cadastrado <%= render "devise/shared/links" %></p>
+
 </div>
