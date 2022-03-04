@@ -8,6 +8,7 @@
       <%= image_tag 'placeholder.jpeg', class: 'w-25' %>
     <% end %>
     <p><%= @campaign.info %></p>
+    <p><%= @campaign.phone_number %></p>
   </div>
 
   <%= link_to 'Create a donation', new_campaign_donation_path(@campaign) %>
