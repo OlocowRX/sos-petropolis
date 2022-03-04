@@ -44,9 +44,9 @@
             <div class="card-trip">
               <% if campaign.image.attached? %>
                 <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
-              <% else %>
+                <% else %>
                 <%= image_tag 'placeholder.jpeg' %>
-              <% end %>
+                <% end %>
               <div class="card-trip-infos">
                 <div class="card-layout">
                   <h2><%= campaign.name %></h2>

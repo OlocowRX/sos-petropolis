@@ -1,23 +1,31 @@
-<h1>All Campaigns</h1>
-<p>Lista de campanhas:</p>
+<div class="row header-campaigns">
+  <h1>Todas as campanhas</h1>
+</div>
+<%# <p>Lista de campanhas:</p> %>
 
-<div class="d-flex">
-  <% @campaigns.each_with_index do |campaign, index| %>
-    <div class="card" style="width: 300px;">
-      <% if campaign.image.attached? %>
-        <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
-      <% else %>
-        <%= image_tag 'placeholder.jpeg' %>
+<div class="container-home">
+  <div class="row">
+      <% @campaigns.each_with_index do |campaign, index| %>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+
+            <div class="card-trip">
+                <% if campaign.image.attached? %>
+                  <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
+                  <% else %>
+                  <%= image_tag 'placeholder.jpeg' %>
+                  <% end %>
+                  <div class="card-body">
+                    <p>
+                      <%= index + 1 %> - <%= campaign.name %> |
+                      <%= campaign.info %> |
+                      <%= campaign.user.name %> |
+                      <%= link_to 'View', campaign_path(campaign), class: "card-allcampaigns" %>
+                    </p>
+                  </div>
+            </div>
+
+        </div>
       <% end %>
-      <div class="card-body">
-        <p>
-          <%= index + 1 %> - <%= campaign.name %> |
-          <%= campaign.info %> |
-          <%= campaign.user.name %> |
-          <%= link_to 'View', campaign_path(campaign) %>
-        </p>
-      </div>
-    </div>
-  <% end %>
+  </div>
 </div>
 <%= link_to 'Create a campaign', new_campaign_path %>
