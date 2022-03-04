@@ -3,6 +3,6 @@ class Campaign < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :name, :info, presence: true
+  validates :name, :info, :phone_number, presence: true
   validates :info, length: { minimum: 20 }
 end
