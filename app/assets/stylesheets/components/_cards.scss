@@ -22,10 +22,11 @@
   .card-body{
     height: 130px;
   }
+  transition: 0.5s;
 }
 .card-trip:hover{
   box-shadow: 7px 7px 7px rgb(109, 103, 103);
-  transition-duration: 0.6s;
+  transition-duration: 0.5s;
 }
 .card-trip > img {
   height: 200px;
