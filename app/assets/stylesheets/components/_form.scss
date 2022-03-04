@@ -1,6 +1,5 @@
 .form-container{
   margin: 50px auto;
-  width: 400px;
 }
 .login{
   display: flex;
@@ -10,10 +9,20 @@
 .form-control{
   background-color: white;
 }
+.btn-login{
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 15px;
+}
 .link-password, .link-signup{
   text-decoration: none;
+  margin-bottom: 10px;
 }
 .link-signup{
   display: inline-block;
   margin-top: 10px;
+}
+.p-layout-form{
+  color: rgb(87, 80, 80);
+  text-align: center;
 }
