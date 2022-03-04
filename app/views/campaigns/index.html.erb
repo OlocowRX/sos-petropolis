@@ -1,9 +1,7 @@
-<div class="title">
-  ><h1>Campanhas</h1>
-  <p>Todas as campanhas:</p>
-</div>
+<h1>Campanhas</h1>
+<p>Todas as campanhas:</p>
 
-<div class="d-flex">
+<div class="d-flex cards">
   <% @campaigns.each_with_index do |campaign, index| %>
     <div class="card" style="width: 300px;">
       <% if campaign.image.attached? %>
