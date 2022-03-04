@@ -1,31 +1,35 @@
-<h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :name,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "full-name" }%>
-    <%= f.input :email,
-                required: true,
-                autofocus: true,
-                input_html: { autocomplete: "email" }%>
-    <%= f.input :password,
-                required: true,
-                hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: true,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :picture,
-                as: :file %>
+<div class="container col-sm-6 col-md-6 col-lg-4  form-container">
+  <div class="login">
+    <h2>Cadastre-se</h2>
   </div>
+  <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= f.error_notification %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <div class="form-inputs">
+      <%= f.input :name,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "full-name" }%>
+      <%= f.input :email,
+                  required: true,
+                  autofocus: true,
+                  input_html: { autocomplete: "email" }%>
+      <%= f.input :password,
+                  required: true,
+                  hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :password_confirmation,
+                  required: true,
+                  input_html: { autocomplete: "new-password" } %>
+      <%= f.input :picture,
+                  as: :file %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "Cadastrar", class: "btn-cadastro btn btn-primary" %>
+    </div>
+  <% end %>
+  <div class="p-layout-form">
+    <p>Caso já tenha um cadastro clique em <%= render "devise/shared/links" %></p>
   </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
