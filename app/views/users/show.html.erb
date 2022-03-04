@@ -37,30 +37,33 @@
 <!--------------------------------DONATIONS------------------------------------>
 
   <div class="donations my-5">
-    <h5>My donations:</h5>
-
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Tipo</th>
-          <th scope="col">Observações</th>
-          <th scope="col">Campanha</th>
-        </tr>
-      </thead>
-      <tbody>
-          <% current_user.donations.each do |donation| %>
-            <tr>
-              <td><%= donation.donation_type.upcase %></td>
-              <td><%= donation.observation %></td>
-              <td><%= link_to donation.campaign.name, campaign_path(donation.campaign), style: 'text-decoration: none; color: #3BAF4C;' %></td>
-              <td><%= link_to 'excluir',
-                      donation_path(donation),
-                      method: :delete,
-                      data: {confirm: "Is this donation done?"},
-                      style: 'text-decoration: none; color: red' %></td>
-            </tr>
-          <% end %>
-      </tbody>
-    </table>
+    <h5>Minhas doações:</h5>
+    <% if current_user.donations.count == 0 %>
+      <p style="color: red;">Você não realizou nenhuma doação ultimamente</p>
+    <% else %>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Tipo</th>
+            <th scope="col">Observações</th>
+            <th scope="col">Campanha</th>
+          </tr>
+        </thead>
+        <tbody>
+            <% current_user.donations.each do |donation| %>
+              <tr>
+                <td><%= donation.donation_type.upcase %></td>
+                <td><%= donation.observation %></td>
+                <td><%= link_to donation.campaign.name, campaign_path(donation.campaign), style: 'text-decoration: none; color: #3BAF4C;' %></td>
+                <td><%= link_to 'excluir',
+                        donation_path(donation),
+                        method: :delete,
+                        data: {confirm: "Is this donation done?"},
+                        style: 'text-decoration: none; color: red' %></td>
+              </tr>
+            <% end %>
+        </tbody>
+      </table>
+    <% end %>
   </div>
 </div>
