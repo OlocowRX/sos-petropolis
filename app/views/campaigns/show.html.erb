@@ -10,6 +10,15 @@
     <p><%= @campaign.info %></p>
     <p><%= @campaign.phone_number %></p>
   </div>
+  <% if @campaign.user == current_user %>
+    <div class="container">
+      <%= link_to 'excluir',
+                  campaign_path(@campaign),
+                  method: :delete,
+                  data: {confirm: "Are you sure?"}%> |
+      <%= link_to 'editar', edit_campaign_path(@campaign)%>
+    </div>
+  <% end %>
 
   <%= link_to 'Create a donation', new_campaign_donation_path(@campaign) %>
 

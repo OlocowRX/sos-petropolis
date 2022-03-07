@@ -19,20 +19,24 @@ class DonationPolicy < ApplicationPolicy
   end
 
   def edit?
-    is_owner_or_admin?
+    owner?
   end
 
   def update?
-    is_owner_or_admin?
+    owner?
   end
 
   def destroy?
-    is_owner_or_admin?
+    owner?
   end
 
   private
 
-  def is_owner_or_admin?
-    record.user == user || user.admin
+  # def is_owner_or_admin?
+  #   record.user == user || user.admin
+  # end
+
+  def owner?
+    record.user == user
   end
 end
