@@ -1,7 +1,10 @@
 class DonationsController < ApplicationController
+  helper_method :done
+
   def new
     @donation = Donation.new
     @campaign = Campaign.find(params[:campaign_id])
+    authorize @donation
   end
 
   def create
@@ -12,6 +15,8 @@ class DonationsController < ApplicationController
     @donation.user = current_user
     @donation.campaign = @campaign
 
+    authorize @donation
+
     if @donation.save
       redirect_to campaign_path(@campaign)
     else
@@ -21,7 +26,16 @@ class DonationsController < ApplicationController
 
   def destroy
     @donation = Donation.find(params[:id])
+    authorize @donation
     @donation.destroy
+
+    redirect_to campaigns_path(@donation.campaign)
+  end
+
+  def done
+    @donation = Donation.find(params[:id])
+    authorize @donation
+    @donation.done = true
 
     redirect_to campaigns_path(@donation.campaign)
   end
@@ -29,6 +43,6 @@ class DonationsController < ApplicationController
   private
 
   def donations_params
-    params.require(:donation).permit(:donation_type, :observation, :user_id, :campaign_id)
+    params.require(:donation).permit(:donation_type, :observation, :quantity, :user_id, :campaign_id)
   end
 end
