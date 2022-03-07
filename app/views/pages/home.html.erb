@@ -6,33 +6,30 @@
     <div class="effetc-js mt-5">
 
         <span id="typed" data-controller="typed-js"></span>
-      
+
     </div>
   </div>
 </div>
 
 <div class="container-home">
   <div class="row">
-    <% @campaigns.each do |campaign| %>
-      <div class="col-sm-6 col-lg-3">
-        <div class="cards">
-          <%= link_to campaign_path(campaign) do %>
-            <div class="card-trip">
+      <% @campaigns.each_with_index do |campaign| %>
+        <div class="col-sm-6 col-md-4 col-lg-3">
+
+          <%= link_to campaign_path(campaign), class: "card-allcampaigns", style: 'text-decoration:none; color: black;' do %>
+          <div class="card-trip">
               <% if campaign.image.attached? %>
                 <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
                 <% else %>
                 <%= image_tag 'placeholder.jpeg' %>
                 <% end %>
-              <div class="card-trip-infos">
-                <div class="card-layout">
-                  <h2><%= campaign.name %></h2>
-                  <%= campaign.info %>
+                <div class="card-body">
+                  <%= campaign.name %>
+                  <p><%= campaign.info %></p>
                 </div>
-              </div>
-            </div>
-          <%end%>
+          </div>
+          <% end %>
         </div>
-      </div>
-    <% end %>
+      <% end %>
   </div>
 </div>
