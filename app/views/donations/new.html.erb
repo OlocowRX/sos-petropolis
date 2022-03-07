@@ -1,11 +1,11 @@
-<h1>Create a new donation: </h1>
+<div class="container col-sm-6 col-md-6 col-lg-4  form-container">
+  <div class="login">
 
-<div class="container">
-
+  <div class="mb-4"><h1 >Faça uma nova doação</h1></div>
+  </div>
   <%= simple_form_for [@campaign, @donation] do |f| %>
-    <%= f.input :donation_type, label: 'Tipo da doação', collection: %w[Dinheiro Comida Roupas] %>
+    <%= f.input :donation_type, label:"Tipo de doação", placeholder: 'Dinheiro, Comida ou roupa', collection: %w[Dinheiro Comida Roupas] %>
     <%= f.input :quantity, input_html: { min: '0', step: 10 }, label: 'Quantidade' %>
-    <%= f.input :observation, label: 'Observação' %>
-    <%= f.button :submit, 'Fazer Doação', class: 'btn btn-primary' %>
+    <%= f.input :observation, label: "Observação" %>
+    <%= f.button :submit, "Doar", class: 'btn-cadastro btn btn-primary' %>
   <% end %>
-</div>
