@@ -1,5 +1,5 @@
 class Campaign < ApplicationRecord
-  has_many :donations
+  has_many :donations, dependent: :destroy
   belongs_to :user
   has_one_attached :image
 
