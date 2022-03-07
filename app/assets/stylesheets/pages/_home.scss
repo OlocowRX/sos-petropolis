@@ -60,6 +60,9 @@
   margin: 0;
 }
 
+.card-trip {
+  height: 300px;
+}
 
 .card-trip .card-trip-infos {
   padding: 16px;
@@ -68,6 +71,7 @@
   align-items: flex-end;
   position: relative;
 }
+
 
 .card-trip-infos .card-trip-user {
   position: absolute;
