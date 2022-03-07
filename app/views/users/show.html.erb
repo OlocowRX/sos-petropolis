@@ -8,6 +8,10 @@
   <div class="info mx-3">
     <h3>Nome: <%= current_user.name %></h3>
     <h4>Email: <%= current_user.email %></h4>
+    <h4>Contato: <%= current_user.phone_number %></h4>
+  </div>
+  <div>
+    <%= link_to 'editar perfil', edit_user_registration_path(current_user) %>
   </div>
 </div>
 <!--------------------------------CAMPAIGNS------------------------------------>
