@@ -1,5 +1,5 @@
-<div class="header-user container">
-  <div class="header d-flex align-items-center pt-5">
+<div class="container">
+  <div class="header header-user d-flex align-items-center pt-5">
     <% if current_user.picture.attached? %>
       <%= image_tag current_user.picture, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
     <% else %>
@@ -57,6 +57,7 @@
         <thead>
           <tr>
             <th scope="col">Tipo</th>
+            <th scope="col">Quantidade</th>
             <th scope="col">Observações</th>
             <th scope="col">Campanha</th>
           </tr>
@@ -64,7 +65,18 @@
         <tbody>
             <% current_user.donations.each do |donation| %>
               <tr>
-                <td><%= donation.donation_type.upcase %></td>
+                <td><%= donation.donation_type.capitalize %></td>
+
+                <% if donation.donation_type.upcase == 'COMIDA' %>
+                  <td><%= donation.quantity%> kgs</td>
+                <% elsif donation.donation_type.upcase == 'DINHEIRO' %>
+                  <td>R$ <%= donation.quantity%></td>
+                <% elsif donation.donation_type.upcase == 'ROUPAS' %>
+                  <td><%= donation.quantity%> unidades</td>
+                <% else %>
+                  <td style='color:#aaa;font-style:italic;'>Não especificado</td>
+                <% end %>
+
                 <td><%= donation.observation %></td>
                 <td><%= link_to donation.campaign.name, campaign_path(donation.campaign), style: 'text-decoration: none; color: #3BAF4C;' %></td>
                 <td><%= link_to 'excluir',
