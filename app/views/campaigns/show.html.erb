@@ -22,16 +22,17 @@
     <%= link_to 'Doar para essa Instituição', new_campaign_donation_path(@campaign) %>
   </div>
 
-
   <% if @campaign.donations.count.positive? %>
   <p>Doações:</p>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">Type</th>
-          <th scope="col">Observation</th>
-          <th scope="col">Donator</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Observação</th>
+          <th scope="col">Doador</th>
+          <th scope="col">Finalizar</i></th>
           <th scope="col"></th>
         </tr>
       </thead>
@@ -40,8 +41,22 @@
           <tr>
             <th scope="row"><%= index + 1 %></th>
             <td><%= donation.donation_type.upcase %></td>
+
+            <% if donation.donation_type.upcase == 'COMIDA' %>
+              <td><%= donation.quantity%> kgs</td>
+            <% elsif donation.donation_type.upcase == 'DINHEIRO' %>
+              <td>R$ <%= donation.quantity%></td>
+            <% elsif donation.donation_type.upcase == 'ROUPAS' %>
+              <td><%= donation.quantity%> unidades</td>
+            <% else %>
+              <td style='color:#aaa;font-style:italic;'>Não especificado</td>
+            <% end %>
+
             <td><%= donation.observation %></td>
             <td><%= donation.user.name %></td>
+            <td><%= link_to do %>
+                  <i class="fas fa-check-square" style="color:black;"></i>
+                <% end %></td>
             <td><%= link_to 'delete',
                       donation_path(donation),
                       method: :delete,
