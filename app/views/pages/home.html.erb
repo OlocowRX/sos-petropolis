@@ -3,10 +3,15 @@
     <h1>Colabore com a reconstrução da <strong>Cidade Imperial</strong></h1>
     <p>Conheça as instituições para as quais você pode doar</p>
     <%= link_to "Doe aqui", "#", class: "btn btn-flat" %>
+
     <div class="effetc-js mt-5">
 
-        <span id="typed" data-controller="typed-js"></span>
-      
+        <span id="typed" data-controller="typed-js"
+                         data-cash='<%= @donations_cash %>'
+                         data-food='<%= @donations_food %>'
+                         data-cloth='<%= @donations_cloth %>'>
+        </span>
+
     </div>
   </div>
 </div>
