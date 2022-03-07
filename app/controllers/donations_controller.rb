@@ -1,4 +1,6 @@
 class DonationsController < ApplicationController
+  helper_method :done
+
   def new
     @donation = Donation.new
     @campaign = Campaign.find(params[:campaign_id])
@@ -26,6 +28,14 @@ class DonationsController < ApplicationController
     @donation = Donation.find(params[:id])
     authorize @donation
     @donation.destroy
+
+    redirect_to campaigns_path(@donation.campaign)
+  end
+
+  def done
+    @donation = Donation.find(params[:id])
+    authorize @donation
+    @donation.done = true
 
     redirect_to campaigns_path(@donation.campaign)
   end
