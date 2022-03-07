@@ -1,46 +1,57 @@
-  <div class="container pt-5">
-    <div class="campaign d-flex flex-column align-items-center mt-5">
-      <h1 class="mb-5"><%= @campaign.name %></h1>
-        <% if @campaign.image.attached? %>
-          <%= cl_image_tag @campaign.image.key, height: 300, width: 400, crop: :fill %>
-        <% else %>
-          <%= image_tag 'placeholder.jpeg', class: 'w-25' %>
-        <% end %>
-          <p class="mt-5"><%= @campaign.info %></p>
-          <p class="mb-5"><%= @campaign.phone_number %></p>
-          <%= link_to 'Doar para essa Instituição', new_campaign_donation_path(@campaign) %>
-
-
-
-    <% if @campaign.donations.count.positive? %>
-    <p>Doações:</p>
-      <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Type</th>
-            <th scope="col">Observation</th>
-            <th scope="col">Donator</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @campaign.donations.each_with_index do |donation, index| %>
-            <tr>
-              <th scope="row"><%= index + 1 %></th>
-              <td><%= donation.donation_type.upcase %></td>
-              <td><%= donation.observation %></td>
-              <td><%= donation.user.name %></td>
-              <td><%= link_to 'delete',
-                        donation_path(donation),
-                        method: :delete,
-                        data: {confirm: "Is this donation done?"}%></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-      <% else %>
-        <p>Nenhuma doação ainda</p>
-      <% end %>
-    </div>
+<div class="container pt-5">
+  <div class="campaign d-flex flex-column align-items-center mt-5">
+    <h1><%= @campaign.name %></h1>
+    <% if @campaign.image.attached? %>
+      <%= cl_image_tag @campaign.image.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <%= image_tag 'placeholder.jpeg', class: 'w-25' %>
+    <% end %>
+    <p class="mt-5"><%= @campaign.info %></p>
+    <p class="mb-5"><%= @campaign.phone_number %></p>
+    <%# botões excluir e editar VVVVVVVV %>
+    <% if @campaign.user == current_user %>
+      <div>
+        <%= link_to 'excluir',
+                    campaign_path(@campaign),
+                    method: :delete,
+                    data: {confirm: "Are you sure?"}%> |
+        <%= link_to 'editar', edit_campaign_path(@campaign)%>
+      </div>
+    <% end %>
+    <%# botões excluir e editar ^^^^^^^^ %>
+    <%= link_to 'Doar para essa Instituição', new_campaign_donation_path(@campaign) %>
   </div>
+
+
+  <% if @campaign.donations.count.positive? %>
+  <p>Doações:</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Type</th>
+          <th scope="col">Observation</th>
+          <th scope="col">Donator</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @campaign.donations.each_with_index do |donation, index| %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= donation.donation_type.upcase %></td>
+            <td><%= donation.observation %></td>
+            <td><%= donation.user.name %></td>
+            <td><%= link_to 'delete',
+                      donation_path(donation),
+                      method: :delete,
+                      data: {confirm: "Is this donation done?"}%></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% else %>
+      <p>Nenhuma doação ainda</p>
+    <% end %>
+  </div>
+</div>

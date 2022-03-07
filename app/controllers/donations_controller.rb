@@ -2,6 +2,7 @@ class DonationsController < ApplicationController
   def new
     @donation = Donation.new
     @campaign = Campaign.find(params[:campaign_id])
+    authorize @donation
   end
 
   def create
@@ -12,6 +13,8 @@ class DonationsController < ApplicationController
     @donation.user = current_user
     @donation.campaign = @campaign
 
+    authorize @donation
+
     if @donation.save
       redirect_to campaign_path(@campaign)
     else
@@ -21,6 +24,7 @@ class DonationsController < ApplicationController
 
   def destroy
     @donation = Donation.find(params[:id])
+    authorize @donation
     @donation.destroy
 
     redirect_to campaigns_path(@donation.campaign)
