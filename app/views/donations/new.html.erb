@@ -1,8 +1,9 @@
 <h1>Create a new donation: </h1>
 
 <div class="container">
+
   <%= simple_form_for [@campaign, @donation] do |f| %>
-    <%= f.input :donation_type, :placeholder => 'Cash, Food or Clothes only' %>
+    <%= f.input :donation_type, collection: %w[Dinheiro Comida Roupas] %>
     <%= f.input :observation %>
     <%= f.button :submit, class: 'btn btn-primary' %>
   <% end %>
