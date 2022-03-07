@@ -28,9 +28,15 @@
       <tbody>
           <% current_user.campaigns.each do |campaign| %>
             <tr>
-              <td><%= campaign.name %></td>
+              <td><%= link_to "#{campaign.name}", campaign_path(campaign) %></td>
               <td><%= campaign.info %></td>
               <td><%= campaign.phone_number %></td>
+              <td><%= link_to 'editar', edit_campaign_path(campaign), style: 'text-decoration: none; color: #3BAF4C;' %></td>
+              <td><%= link_to 'excluir',
+                  campaign_path(campaign),
+                  method: :delete,
+                  data: {confirm: "Are you sure?"},
+                  style: 'text-decoration: none; color: red' %></td>
             </tr>
           <% end %>
       </tbody>

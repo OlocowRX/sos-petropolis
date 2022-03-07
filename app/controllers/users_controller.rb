@@ -1,3 +1,5 @@
 class UsersController < ApplicationController
-  def show; end
+  def show
+    authorize current_user
+  end
 end

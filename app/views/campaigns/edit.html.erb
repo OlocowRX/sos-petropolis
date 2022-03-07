@@ -1,0 +1,10 @@
+<div class="container pt-5">
+  <h1>Editar campanha:</h1>
+    <%= simple_form_for [@campaign] do |f| %>
+      <%= f.input :name %>
+      <%= f.input :info %>
+      <%= f.input :phone_number, :placeholder => '(DDD) 9 8008-8008' %>
+      <%= f.input :image, as: :file %>
+      <%= f.button :submit, class: 'btn btn-primary' %>
+    <% end %>
+</div>
