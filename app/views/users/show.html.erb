@@ -1,15 +1,18 @@
-<div class="container">
-  <div class="header-user d-flex align-items-center pt-5 col-sm-6 col-md-8 col-lg-8">
-    <% if current_user.picture.attached? %>
-      <%= image_tag current_user.picture, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
-    <% else %>
-      <%= image_tag "avatar.png", class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
-    <% end %>
-    <div class="info mx-3">
-      <h4>Nome: <%= current_user.name %></h4>
-      <h5>Email: <%= current_user.email %></h5>
-      <h5>Contato: <%= current_user.phone_number %></h5>
+<div class="container col-sm-8 col-md-8 container-user">
+  <div class="header-user d-flex pt-5">
+    <div class="d-flex">
+      <% if current_user.picture.attached? %>
+        <%= image_tag current_user.picture, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
+      <% else %>
+        <%= image_tag "avatar.png", class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
+      <% end %>
+      <div class="info mx-3">
+        <h4>Nome: <%= current_user.name %></h4>
+        <h5>Email: <%= current_user.email %></h5>
+        <h5>Contato: <%= current_user.phone_number %></h5>
+      </div>
     </div>
+
     <div class="align-self-end">
       <%= link_to 'editar perfil', edit_user_registration_path(current_user) %>
     </div>
@@ -18,7 +21,7 @@
 <!--------------------------------CAMPAIGNS------------------------------------>
 
 
-  <div class="campaigns my-5 col-sm-6 col-md-8 col-lg-8">
+  <div class="campaigns my-5">
     <h5>Minhas Campanhas:</h5>
     <% if current_user.campaigns.count == 0 %>
       <p style="color: red;">Nenhuma campanha ativa</p>
@@ -52,7 +55,7 @@
 
 <!--------------------------------DONATIONS------------------------------------>
 
-  <div class="donations my-5 col-sm-6 col-md-8 col-lg-8">
+  <div class="donations my-5">
     <h5>Minhas doações:</h5>
     <% if current_user.donations.count == 0 %>
       <p style="color: red;">Você não realizou nenhuma doação ultimamente</p>
