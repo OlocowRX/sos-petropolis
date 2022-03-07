@@ -59,13 +59,20 @@
   opacity: .7;
   margin: 0;
 }
+
+.card-trip {
+  height: 20rem;
+}
+
 .card-trip .card-trip-infos {
   padding: 16px;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
   position: relative;
+  overflow-y: auto;
 }
+
 
 .card-trip-infos .card-trip-user {
   position: absolute;
