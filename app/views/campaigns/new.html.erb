@@ -1,10 +1,13 @@
-<div class="container pt-5">
-<h1>Crie sua propria campanha:</h1>
+<div class="container col-sm-6 col-md-6 col-lg-4  form-container">
+  <div class="login">
+    <h1>Crie sua propria campanha:</h1>
+  </div>
   <%= simple_form_for [@campaign] do |f| %>
-    <%= f.input :name %>
-    <%= f.input :info %>
-    <%= f.input :phone_number, :placeholder => '(DDD) 9 8008-8008' %>
-    <%= f.input :image, as: :file %>
-    <%= f.button :submit, class: 'btn btn-primary' %>
+    <%= f.input :name, label:"Nome" %>
+    <%= f.input :info, label:"Informações"%>
+    <%= f.input :phone_number, label:"Telefone", :placeholder => '(DDD) 9 8008-8008' %>
+    <%= f.input :image, label:"Imagem", as: :file%>
+    <%= f.button :submit, "Crie uma nova campanha", class: 'btn-cadastro btn btn-primary' %>
   <% end %>
+
 </div>
