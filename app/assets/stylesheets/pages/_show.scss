@@ -9,3 +9,19 @@
   justify-content: center;
   flex-direction: column;
 }
+
+.show-campaign {
+  background-size: cover;
+  background-position: center;
+  padding: 20px 0;
+  background-color: EFFFFD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.campaign {
+  width: 80%;
+}
