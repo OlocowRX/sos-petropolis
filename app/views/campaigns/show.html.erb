@@ -22,31 +22,9 @@
     <%= link_to 'Doar para essa Instituição', new_campaign_donation_path(@campaign) %>
   </div>
 
-  <% if @campaign.donations.count.positive? %>
-  <p>Doações:</p>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Tipo</th>
-          <th scope="col">Quantidade</th>
-          <th scope="col">Observação</th>
-          <th scope="col">Doador</th>
-          <th scope="col">Status</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @donations.each_with_index do |donation, index| %>
-          <tr>
-            <th scope="row"><%= index + 1 %></th>
-            <td><%= donation.donation_type.upcase %></td>
-
-
-
   <div class="container pt-5">
     <% if @campaign.donations.count.positive? %>
-    <p>Doações:</p>
+      <p>Doações:</p>
       <table class="table">
         <thead>
           <tr>
@@ -96,12 +74,12 @@
                   <% end %>
                 </td>
               <% end %>
+            </tr>
           <% end %>
         </tbody>
       </table>
-      <% else %>
-        <p>Nenhuma doação ainda</p>
-      <% end %>
-    </div>
+    <% else %>
+      <p>Nenhuma doação ainda</p>
+    <% end %>
   </div>
 </div>
