@@ -1,8 +1,8 @@
 .container-user{
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgba(173, 167, 167, 0.685);
+  // border: 1px solid rgba(173, 167, 167, 0.685);
   border-radius: 5px;
-  box-shadow: 7px 7px 7px rgb(184, 180, 180);
+  box-shadow: 2px 2px 1px rgb(184, 180, 180);
   margin-top: 40px;
   padding: 40px;
 }
@@ -12,3 +12,17 @@
   justify-content: space-between;
   margin: 0 auto;
 }
+
+
+// responsividade
+
+
+// @media (max-width: 768px){
+
+//   .container-user{
+//    display: flex;
+
+//   }
+
+
+// }

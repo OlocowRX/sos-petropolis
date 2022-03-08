@@ -1,8 +1,8 @@
-<div class="container col-sm-8 col-md-8 container-user">
-  <div class="header-user d-flex pt-5">
+<div class="container col-sm-12 col-md-8 col-lg-8">
+  <div class="header-user d-flex pt-5 mt-5 container-user">
     <div class="d-flex">
       <% if current_user.picture.attached? %>
-        <%= image_tag current_user.picture, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
+        <%= image_tag current_user.picture, style: 'border-radius: 50%; ' %>
       <% else %>
         <%= image_tag "avatar.png", class: "avatar dropdown-toggle ", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false, style: 'border-radius: 50%; width: 100px; height: 100px;' %>
       <% end %>
@@ -21,7 +21,7 @@
 <!--------------------------------CAMPAIGNS------------------------------------>
 
 
-  <div class="campaigns my-5">
+  <div class="campaigns my-4 container-user">
     <h5>Minhas Campanhas:</h5>
     <% if current_user.campaigns.count == 0 %>
       <p style="color: red;">Nenhuma campanha ativa</p>
@@ -55,7 +55,7 @@
 
 <!--------------------------------DONATIONS------------------------------------>
 
-  <div class="donations my-5">
+  <div class="donations my-4 container-user">
     <h5>Minhas doações:</h5>
     <% if current_user.donations.count == 0 %>
       <p style="color: red;">Você não realizou nenhuma doação ultimamente</p>
