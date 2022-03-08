@@ -35,15 +35,15 @@
       <thead>
         <tr>
           <th scope="col">Nome</th>
-          <th scope="col">Informações</th>
+          <%# <th scope="col">Informações</th> %>
           <th scope="col">Telefone</th>
         </tr>
       </thead>
       <tbody>
           <% current_user.campaigns.each do |campaign| %>
             <tr>
-              <td><%= link_to "#{campaign.name}", campaign_path(campaign) %></td>
-              <td><%= campaign.info %></td>
+              <td><%= campaign.name %></td>
+              <%# <td><%= campaign.info %></td>
               <td><%= campaign.phone_number %></td>
               <td><%= link_to 'editar', edit_campaign_path(campaign), style: 'text-decoration: none; color: #3BAF4C;' %></td>
               <td><%= link_to 'excluir',
@@ -51,6 +51,7 @@
                   method: :delete,
                   data: {confirm: "Are you sure?"},
                   style: 'text-decoration: none; color: red' %></td>
+              <td><%= link_to "ver mais", campaign_path(campaign) %></td>
             </tr>
           <% end %>
       </tbody>
