@@ -71,7 +71,8 @@
 
     <div class="p-5 mb-4">
       <% if current_user.donations.count == 0 %>
-        <p style="color: red;">Você não realizou nenhuma doação ultimamente</p>
+        <p style="color: red;">Você ainda não realizou nenhuma doação</p>
+        <%= link_to 'doe agora', campaigns_path, class: "btn btn-primary" %>
       <% else %>
       <table class="table">
         <thead>
@@ -80,10 +81,11 @@
             <th scope="col">Quantidade</th>
             <th scope="col">Observações</th>
             <th scope="col">Campanha</th>
+            <th scope="col">Status</th>
           </tr>
         </thead>
         <tbody>
-            <% current_user.donations.each do |donation| %>
+            <% current_user.donations.reject { |dnt| dnt.done? }.each do |donation| %>
               <tr>
                 <td><%= donation.donation_type.capitalize %></td>
 
@@ -99,11 +101,23 @@
 
                 <td><%= donation.observation %></td>
                 <td><%= link_to donation.campaign.name, campaign_path(donation.campaign), style: 'text-decoration: none; color: #3BAF4C;' %></td>
-                <td><%= link_to 'excluir',
-                        donation_path(donation),
-                        method: :delete,
-                        data: {confirm: "Is this donation done?"},
-                        style: 'text-decoration: none; color: red' %></td>
+                <% if donation.done? %>
+                  <td><p style="color: #6c757d;"> concluída </p></td>
+                <% else %>
+                  <td><p style="color: #0d6efd;"> aberta </p></td>
+                <% end %>
+              </tr>
+            <% end %>
+            <% current_user.donations.select { |dnt| dnt.done? }.each do |donation| %>
+              <tr>
+                <td><%= donation.donation_type.upcase %></td>
+                <td><%= donation.observation %></td>
+                <td><%= link_to donation.campaign.name, campaign_path(donation.campaign), style: 'text-decoration: none; color: #3BAF4C;' %></td>
+                <% if donation.done? %>
+                  <td><p style="color: #6c757d;"> concluída </p></td>
+                <% else %>
+                  <td><p style="color: #0d6efd;"> aberta </p></td>
+                <% end %>
               </tr>
             <% end %>
         </tbody>

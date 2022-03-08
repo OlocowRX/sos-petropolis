@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :campaigns, shallow: true do
-    resources :donations, only: %i[new create destroy]
+    resources :donations, only: %i[new create]
   end
+
+  resources :donations, only: %i[update destroy]
 end
