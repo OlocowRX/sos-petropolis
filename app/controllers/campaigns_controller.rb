@@ -8,6 +8,7 @@ class CampaignsController < ApplicationController
   end
 
   def show
+    @donations = @campaign.donations.order("done")
   end
 
   def new
