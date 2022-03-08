@@ -74,7 +74,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super(resource)
   # end
 
-  def after_update_path_for(resource)
+  def after_update_path_for(_resource)
     # sign_in_after_change_password? ? signed_in_root_path(resource) : new_session_path(resource_name)
     user_path(current_user)
   end

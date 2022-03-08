@@ -17,7 +17,11 @@
                 <% end %>
                 <div class="card-body">
                   <%= campaign.name %>
-                  <p><%= campaign.info %></p>
+                  <% if campaign.info.split.length > 20 %>
+                    <p><%= "#{campaign.info.split[0..20].join(' ')} ..." %></p>
+                  <% else %>
+                    <p><%= campaign.info %></p>
+                  <% end %>
                 </div>
             </div>
           <% end %>
