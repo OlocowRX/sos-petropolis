@@ -50,6 +50,7 @@
                 <th scope="col">Quantidade</th>
                 <th scope="col">Observação</th>
                 <th scope="col">Doador</th>
+                <th scope="col">Contato</th>
                 <th scope="col">Finalizar</i></th>
                 <th scope="col"></th>
               </tr>
@@ -72,6 +73,11 @@
 
                   <td><%= donation.observation %></td>
                   <td><%= donation.user.name %></td>
+                  <% if donation.user.phone_number == nil %>
+                    <td style="color: gray;">Não informado</td>
+                  <% else %>
+                    <td><%= donation.user.phone_number %></td>
+                  <% end %>
                   <td>
                     <% if donation.done? %>
                       <p style="color: #6c757d;"> concluída </p>
