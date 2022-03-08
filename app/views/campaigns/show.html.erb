@@ -1,13 +1,13 @@
-<div class="container pt-5">
-  <div class="campaign d-flex flex-column align-items-center mt-5">
-    <h1><%= @campaign.name %></h1>
+<div class="show-campaign col-sm-12 col-md-8 col-lg-6 align-items-center">
+  <div class="campaign d-flex pt-5 mt-5 flex-column align-items-center justify-content-center">
+    <h1><strong><%= @campaign.name %></strong></h1>
     <% if @campaign.image.attached? %>
       <%= cl_image_tag @campaign.image.key, height: 300, width: 400, crop: :fill %>
     <% else %>
       <%= image_tag 'placeholder.jpeg', class: 'w-25' %>
     <% end %>
-    <p class="mt-5"><%= @campaign.info %></p>
-    <p class="mb-5"><%= @campaign.phone_number %></p>
+    <p class="mt-3"><%= @campaign.info %></p>
+    <p class="mb-2"><%= @campaign.phone_number %></p>
     <%# botões excluir e editar VVVVVVVV %>
     <% if @campaign.user == current_user %>
       <div>
@@ -22,60 +22,62 @@
     <%= link_to 'Doar para essa Instituição', new_campaign_donation_path(@campaign) %>
   </div>
 
-  <% if @campaign.donations.count.positive? %>
-  <p>Doações:</p>
-    <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">#</th>
-          <th scope="col">Tipo</th>
-          <th scope="col">Quantidade</th>
-          <th scope="col">Observação</th>
-          <th scope="col">Doador</th>
-          <th scope="col">Status</th>
-          <th scope="col"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @donations.each_with_index do |donation, index| %>
+  <div class="container pt-5">
+    <% if @campaign.donations.count.positive? %>
+      <p>Doações:</p>
+      <table class="table">
+        <thead>
           <tr>
-            <th scope="row"><%= index + 1 %></th>
-            <td><%= donation.donation_type.upcase %></td>
+            <th scope="col">#</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Quantidade</th>
+            <th scope="col">Observação</th>
+            <th scope="col">Doador</th>
+            <th scope="col">Finalizar</i></th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @campaign.donations.each_with_index do |donation, index| %>
+            <tr>
+              <th scope="row"><%= index + 1 %></th>
+              <td><%= donation.donation_type.upcase %></td>
 
-            <% if donation.donation_type.upcase == 'COMIDA' %>
-              <td><%= donation.quantity%> kgs</td>
-            <% elsif donation.donation_type.upcase == 'DINHEIRO' %>
-              <td>R$ <%= donation.quantity%></td>
-            <% elsif donation.donation_type.upcase == 'ROUPAS' %>
-              <td><%= donation.quantity%> unidades</td>
-            <% else %>
-              <td style='color:#aaa;font-style:italic;'>Não especificado</td>
-            <% end %>
-
-            <td><%= donation.observation %></td>
-            <td><%= donation.user.name %></td>
-            <td>
-              <% if donation.done? %>
-                <p style="color: #6c757d;"> concluída </p>
+              <% if donation.donation_type.upcase == 'COMIDA' %>
+                <td><%= donation.quantity%> kgs</td>
+              <% elsif donation.donation_type.upcase == 'DINHEIRO' %>
+                <td>R$ <%= donation.quantity%></td>
+              <% elsif donation.donation_type.upcase == 'ROUPAS' %>
+                <td><%= donation.quantity%> unidades</td>
               <% else %>
-                <p style="color: #0d6efd;"> aberta </p>
+                <td style='color:#aaa;font-style:italic;'>Não especificado</td>
               <% end %>
-            </td>
-            <% if current_user == @campaign.user%>
+
+              <td><%= donation.observation %></td>
+              <td><%= donation.user.name %></td>
               <td>
                 <% if donation.done? %>
-                  <i class="fas fa-check-square" style="color:green;"></i>
+                  <p style="color: #6c757d;"> concluída </p>
                 <% else %>
-                  <%= simple_form_for donation do |f| %>
-                    <%= f.input :done, as: :hidden, input_html: { value: 'true' }, data: {confirm: "Confirmar ação"} %>
-                    <%= f.submit "concluir doação", class: "btn btn-outline-secondary btn-sm" %>
-                  <% end %>
+                  <p style="color: #0d6efd;"> aberta </p>
                 <% end %>
               </td>
-            <% end %>
-        <% end %>
-      </tbody>
-    </table>
+              <% if current_user == @campaign.user%>
+                <td>
+                  <% if donation.done? %>
+                    <i class="fas fa-check-square" style="color:green;"></i>
+                  <% else %>
+                    <%= simple_form_for donation do |f| %>
+                      <%= f.input :done, as: :hidden, input_html: { value: 'true' }, data: {confirm: "Confirmar ação"} %>
+                      <%= f.submit "concluir doação", class: "btn btn-outline-secondary btn-sm" %>
+                    <% end %>
+                  <% end %>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     <% else %>
       <p>Nenhuma doação ainda</p>
     <% end %>
