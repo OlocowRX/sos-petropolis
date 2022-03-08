@@ -1,0 +1,50 @@
+.container-user{
+  background-color: rgb(255, 255, 255);
+  // border: 1px solid rgba(173, 167, 167, 0.685);
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px rgb(184, 180, 180);
+  margin-top: 40px;
+  padding: 40px;
+}
+
+.header-user{
+  justify-content: center;
+  justify-content: space-between;
+  margin: 0 auto;
+  background-color: hsl(30, 8%, 90%);
+  background-image: linear-gradient(to right, rgba(255,0,0,0), rgb(115, 164, 170));
+}
+.icon{
+  display: inline-block;
+  margin-right: 8px;
+  color: rgb(64, 104, 64);
+}
+.link-user a{
+  color: white;
+}
+// ---------campaign-----------
+
+.container-campaign-user{
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  box-shadow: 2px 2px 1px rgb(184, 180, 180);
+  margin-top: 40px;
+  padding: 0 0 10px 0;
+  margin-bottom: 30px;
+
+}
+.container-header-campaign{
+  height: 150px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+.background-campaigns{
+ background-size: cover;
+ background-position: center;
+ background-repeat: no-repeat;
+ border-top-left-radius: 5px;
+ border-top-right-radius: 5px;
+}
+
+// ---------donation-----------

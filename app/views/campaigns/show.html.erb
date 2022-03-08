@@ -22,6 +22,25 @@
     <%= link_to 'Doar para essa Instituição', new_campaign_donation_path(@campaign) %>
   </div>
 
+  <% if @campaign.donations.count.positive? %>
+  <p>Doações:</p>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Tipo</th>
+          <th scope="col">Quantidade</th>
+          <th scope="col">Observação</th>
+          <th scope="col">Doador</th>
+          <th scope="col">Status</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @donations.each_with_index do |donation, index| %>
+          <tr>
+            <th scope="row"><%= index + 1 %></th>
+            <td><%= donation.donation_type.upcase %></td>
 
 
 
@@ -58,14 +77,25 @@
 
               <td><%= donation.observation %></td>
               <td><%= donation.user.name %></td>
-              <td><%= link_to do %>
-                    <i class="fas fa-check-square" style="color:black;"></i>
-                  <% end %></td>
-              <td><%= link_to 'delete',
-                        donation_path(donation),
-                        method: :delete,
-                        data: {confirm: "Is this donation done?"}%></td>
-            </tr>
+              <td>
+                <% if donation.done? %>
+                  <p style="color: #6c757d;"> concluída </p>
+                <% else %>
+                  <p style="color: #0d6efd;"> aberta </p>
+                <% end %>
+              </td>
+              <% if current_user == @campaign.user%>
+                <td>
+                  <% if donation.done? %>
+                    <i class="fas fa-check-square" style="color:green;"></i>
+                  <% else %>
+                    <%= simple_form_for donation do |f| %>
+                      <%= f.input :done, as: :hidden, input_html: { value: 'true' }, data: {confirm: "Confirmar ação"} %>
+                      <%= f.submit "concluir doação", class: "btn btn-outline-secondary btn-sm" %>
+                    <% end %>
+                  <% end %>
+                </td>
+              <% end %>
           <% end %>
         </tbody>
       </table>
