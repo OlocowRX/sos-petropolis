@@ -1,0 +1,27 @@
+<div class="carousel-body">
+  <input type="radio" id="item-1" name="position" checked />
+  <input type="radio" id="item-2" name="position" />
+  <input type="radio" id="item-3" name="position" />
+  <input type="radio" id="item-4" name="position" />
+  <input type="radio" id="item-5" name="position" />
+
+  <main id="carousel">
+      <% @campaigns.each_with_index do |campaign, index| %>
+        <div class="item" for="item-<%= index + 1 %>">
+          <%= link_to campaign_path(campaign), class: "card-allcampaigns", style: 'text-decoration:none; color: black;' do %>
+            <div class="card-trip">
+              <% if campaign.image.attached? %>
+                  <%= cl_image_tag campaign.image.key, height: 300, width: 400, crop: :fill %>
+                <% else %>
+                  <%= image_tag 'placeholder.jpeg' %>
+                <% end %>
+                <div class="card-body">
+                  <%= campaign.name %>
+                  <p><%= campaign.info %></p>
+                </div>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    <main>
+</div>
