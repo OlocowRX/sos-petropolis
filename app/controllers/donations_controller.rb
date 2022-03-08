@@ -24,6 +24,13 @@ class DonationsController < ApplicationController
     end
   end
 
+  def update
+    @donation = Donation.find(params[:id])
+    authorize @donation
+    @donation.update!(donations_params)
+    redirect_to campaign_path(@donation.campaign)
+  end
+
   def destroy
     @donation = Donation.find(params[:id])
     authorize @donation
@@ -43,6 +50,6 @@ class DonationsController < ApplicationController
   private
 
   def donations_params
-    params.require(:donation).permit(:donation_type, :observation, :quantity, :user_id, :campaign_id)
+    params.require(:donation).permit(:donation_type, :observation, :quantity, :user_id, :campaign_id, :done)
   end
 end

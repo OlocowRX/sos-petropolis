@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def show
     authorize current_user
+    # @donations = current_user.donations.order("done")
   end
 
   # def edit
