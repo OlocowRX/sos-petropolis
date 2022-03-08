@@ -10,20 +10,12 @@ class DonationPolicy < ApplicationPolicy
     true
   end
 
-  def new?
-    true
-  end
-
   def create?
     true
   end
 
-  def edit?
-    owner?
-  end
-
   def update?
-    owner?
+    record.campaign.user == user
   end
 
   def destroy?
@@ -39,4 +31,5 @@ class DonationPolicy < ApplicationPolicy
   def owner?
     record.user == user
   end
+
 end
